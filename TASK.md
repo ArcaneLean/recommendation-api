@@ -15,13 +15,13 @@ Steps:
 ## Phase 2 — Database Layer
 
 Steps:
-- [ ] 1. Configure PostgreSQL connection string via environment variable
-- [ ] 2. Implement `app/db.py` — SQLAlchemy engine, session factory, and `Base`
-- [ ] 3. Implement `app/models.py` — `User`, `Item`, and `Interaction` ORM models
-- [ ] 4. Add table creation on startup in `app/main.py`
-- [ ] 5. Verify tables are created in the database
+- [x] 1. Configure PostgreSQL connection string via environment variable
+- [x] 2. Implement `app/db.py` — SQLAlchemy engine, session factory, and `Base`
+- [x] 3. Implement `app/models.py` — `User`, `Item`, and `Interaction` ORM models
+- [x] 4. Add table creation on startup in `app/main.py`
+- [x] 5. Verify tables are created in the database
 
-**Current step: 1**
+**Current step: 5**
 
 ---
 
