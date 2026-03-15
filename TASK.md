@@ -12,7 +12,7 @@ Steps:
 
 ---
 
-## Phase 2 — Database Layer
+## Phase 2 — Database Layer ✓ Complete
 
 Steps:
 - [x] 1. Configure PostgreSQL connection string via environment variable
@@ -21,10 +21,34 @@ Steps:
 - [x] 4. Add table creation on startup in `app/main.py`
 - [x] 5. Verify tables are created in the database
 
-**Current step: 5**
+---
+
+## Phase 3 — Interaction API
+
+**Current step: 6**
+
+Steps:
+- [x] 1. Implement `app/schemas.py` — Pydantic request/response schemas for User, Item, Interaction
+- [x] 2. Implement `app/crud.py` — create functions for User, Item, Interaction
+- [x] 3. Add `POST /users` endpoint to `app/main.py`
+- [x] 4. Add `POST /items` endpoint to `app/main.py`
+- [x] 5. Add `POST /interactions` endpoint — validate user_id and item_id exist, rating in 0–5
+- [x] 6. Manual smoke test all three endpoints via Swagger UI (`/docs`)
+- [x] 7. Update TASK.md — mark Phase 3 complete, set Phase 4 as current
+
+---
+
+## Phase 4 — Recommendation Logic
+
+**Current step: 1**
+
+Steps:
+- [ ] 1. Implement `app/services.py` — recommendation logic (suggest items in the same category that the user hasn't interacted with)
+- [ ] 2. Add `GET /recommendations/{user_id}` endpoint to `app/main.py`
+- [ ] 3. Manual smoke test — call the endpoint for "Arcane" and verify it returns items
+- [ ] 4. Update TASK.md — mark Phase 4 complete, set Phase 5 as current
 
 ---
 
 Success criteria:
-- Tables created successfully
-- API can read/write data
+- `GET /recommendations/{user_id}` returns a list of recommended items
