@@ -4,8 +4,6 @@ A backend service that recommends media to users based on their past interaction
 
 Built to gain hands-on familiarity with Python, FastAPI, PostgreSQL, and SQLAlchemy — developed with [Claude Code](https://claude.ai/claude-code).
 
-**Live demo:** https://web-production-6c842.up.railway.app/docs
-
 ---
 
 ## Features
@@ -21,7 +19,6 @@ Built to gain hands-on familiarity with Python, FastAPI, PostgreSQL, and SQLAlch
 - **PostgreSQL** + **SQLAlchemy**
 - **Pydantic** for request/response validation
 - **pytest** for testing
-- Deployed on **Railway**
 
 ## Endpoints
 
