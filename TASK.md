@@ -59,5 +59,23 @@ Steps:
 
 ---
 
+## Phase 6 — Deployment
+
+**Current step: 4**
+
+Steps:
+- [x] 1. Add `Procfile` with uvicorn start command using `$PORT`
+- [x] 2. Fix `postgres://` → `postgresql://` URL rewrite in `app/db.py` for Railway compatibility
+- [x] 3. Add `.pytest_cache/` to `.gitignore`
+- [ ] 4. Push repo to GitHub
+- [ ] 5. Create Railway project, connect GitHub repo, add PostgreSQL plugin
+- [ ] 6. Set `DATABASE_URL` env var in Railway (auto-provided by the PostgreSQL plugin)
+- [ ] 7. Run `python -m scripts.seed` via Railway console to populate demo data
+- [ ] 8. Verify the public URL works — hit `/docs` and `/recommendations/{user_id}`
+- [ ] 9. Update TASK.md — mark Phase 6 complete
+
+---
+
 Success criteria:
 - All tests pass ✓
+- API accessible at a public Railway URL
