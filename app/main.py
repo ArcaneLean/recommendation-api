@@ -3,7 +3,7 @@
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 
-from app import crud, schemas
+from app import crud, schemas, services
 from app.db import Base, engine, get_db
 from app.models import Interaction, Item, User  # noqa: F401
 
@@ -39,3 +39,10 @@ def create_interaction(data: schemas.InteractionCreate, db: Session = Depends(ge
     if not crud.get_item(db, data.item_id):
         raise HTTPException(status_code=404, detail="Item not found")
     return crud.create_interaction(db, data)
+
+
+@app.get("/recommendations/{user_id}", response_model=list[schemas.ItemResponse])
+def get_recommendations(user_id: int, db: Session = Depends(get_db)) -> list[Item]:
+    if not crud.get_user(db, user_id):
+        raise HTTPException(status_code=404, detail="User not found")
+    return services.get_recommendations(db, user_id)

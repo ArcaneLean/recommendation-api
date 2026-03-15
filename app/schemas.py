@@ -1,6 +1,6 @@
 """Pydantic schemas for request and response validation."""
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 class UserCreate(BaseModel):
@@ -16,15 +16,24 @@ class UserResponse(BaseModel):
 
 class ItemCreate(BaseModel):
     name: str
-    category: str
+    type: str
+    tags: list[str] = []
 
 
 class ItemResponse(BaseModel):
     id: int
     name: str
-    category: str
+    type: str
+    tags: list[str]
 
     model_config = {"from_attributes": True}
+
+    @field_validator("tags", mode="before")
+    @classmethod
+    def extract_tag_names(cls, v: object) -> list[str]:
+        if isinstance(v, list) and v and hasattr(v[0], "name"):
+            return [tag.name for tag in v]
+        return v  # type: ignore[return-value]
 
 
 class InteractionCreate(BaseModel):
