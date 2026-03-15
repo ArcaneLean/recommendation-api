@@ -48,18 +48,16 @@ Steps:
 
 ---
 
-## Phase 5 — Testing
-
-**Current step: 1**
+## Phase 5 — Testing ✓ Complete
 
 Steps:
-- [ ] 1. Setup pytest and create `tests/` directory with `conftest.py`
-- [ ] 2. Write unit tests for `app/services.py`
-- [ ] 3. Write API endpoint tests for all routes
-- [ ] 4. Run tests and verify all pass
-- [ ] 5. Update TASK.md — mark Phase 5 complete
+- [x] 1. Setup pytest and create `tests/` directory with `conftest.py`
+- [x] 2. Write unit tests for `app/services.py`
+- [x] 3. Write API endpoint tests for all routes
+- [x] 4. Run tests and verify all pass
+- [x] 5. Update TASK.md — mark Phase 5 complete
 
 ---
 
 Success criteria:
-- All tests pass
+- All tests pass ✓

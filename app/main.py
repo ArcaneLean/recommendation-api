@@ -1,5 +1,8 @@
 """Main entry point for the Recommendation API."""
 
+from contextlib import asynccontextmanager
+from typing import AsyncGenerator
+
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 
@@ -7,13 +10,14 @@ from app import crud, schemas, services
 from app.db import Base, engine, get_db
 from app.models import Interaction, Item, User  # noqa: F401
 
-app = FastAPI(title="Recommendation API")
 
-
-@app.on_event("startup")
-def create_tables() -> None:
-    """Create all database tables on application startup."""
+@asynccontextmanager
+async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     Base.metadata.create_all(bind=engine)
+    yield
+
+
+app = FastAPI(title="Recommendation API", lifespan=lifespan)
 
 
 @app.get("/")
