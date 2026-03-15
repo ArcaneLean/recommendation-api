@@ -149,11 +149,3 @@ Tasks:
 Success criteria:
 - API accessible online.
 
----
-
-# Current Phase
-
-Phase 1 — Project Setup
-
-Current task:
-- Create FastAPI application structure
