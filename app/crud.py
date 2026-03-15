@@ -13,16 +13,17 @@ def create_user(db: Session, data: schemas.UserCreate) -> models.User:
     return user
 
 
+def get_user(db: Session, user_id: int) -> models.User | None:
+    return db.get(models.User, user_id)
+
+
 def create_item(db: Session, data: schemas.ItemCreate) -> models.Item:
-    item = models.Item(name=data.name, category=data.category)
+    item = models.Item(name=data.name, type=data.type)
+    item.tags = [_get_or_create_tag(db, name) for name in data.tags]
     db.add(item)
     db.commit()
     db.refresh(item)
     return item
-
-
-def get_user(db: Session, user_id: int) -> models.User | None:
-    return db.get(models.User, user_id)
 
 
 def get_item(db: Session, item_id: int) -> models.Item | None:
@@ -39,3 +40,12 @@ def create_interaction(db: Session, data: schemas.InteractionCreate) -> models.I
     db.commit()
     db.refresh(interaction)
     return interaction
+
+
+def _get_or_create_tag(db: Session, name: str) -> models.Tag:
+    tag = db.query(models.Tag).filter(models.Tag.name == name).first()
+    if not tag:
+        tag = models.Tag(name=name)
+        db.add(tag)
+        db.flush()
+    return tag

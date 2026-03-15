@@ -23,9 +23,7 @@ Steps:
 
 ---
 
-## Phase 3 — Interaction API
-
-**Current step: 6**
+## Phase 3 — Interaction API ✓ Complete
 
 Steps:
 - [x] 1. Implement `app/schemas.py` — Pydantic request/response schemas for User, Item, Interaction
@@ -38,17 +36,30 @@ Steps:
 
 ---
 
-## Phase 4 — Recommendation Logic
+## Phase 4 — Recommendation Logic ✓ Complete
+
+Steps:
+- [x] 1. Create `scripts/seed.py` — populate the database with dummy users, items, and interactions
+- [x] 2. Run `scripts/seed.py` and verify data appears in the database
+- [x] 3. Implement `app/services.py` — recommendation logic (suggest items in the same category that the user hasn't interacted with)
+- [x] 4. Add `GET /recommendations/{user_id}` endpoint to `app/main.py`
+- [x] 5. Manual smoke test — call the endpoint for a seeded user and verify it returns items
+- [x] 6. Update TASK.md — mark Phase 4 complete, set Phase 5 as current
+
+---
+
+## Phase 5 — Testing
 
 **Current step: 1**
 
 Steps:
-- [ ] 1. Implement `app/services.py` — recommendation logic (suggest items in the same category that the user hasn't interacted with)
-- [ ] 2. Add `GET /recommendations/{user_id}` endpoint to `app/main.py`
-- [ ] 3. Manual smoke test — call the endpoint for "Arcane" and verify it returns items
-- [ ] 4. Update TASK.md — mark Phase 4 complete, set Phase 5 as current
+- [ ] 1. Setup pytest and create `tests/` directory with `conftest.py`
+- [ ] 2. Write unit tests for `app/services.py`
+- [ ] 3. Write API endpoint tests for all routes
+- [ ] 4. Run tests and verify all pass
+- [ ] 5. Update TASK.md — mark Phase 5 complete
 
 ---
 
 Success criteria:
-- `GET /recommendations/{user_id}` returns a list of recommended items
+- All tests pass
